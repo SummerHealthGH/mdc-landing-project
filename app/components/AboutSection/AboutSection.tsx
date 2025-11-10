@@ -53,7 +53,7 @@ const AboutSection: FC<AboutSectionProps> = ({
         />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-l from-white via-white/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-l from-white via-white/70 to-transparent"></div>
       </div>
     </section>
   );
