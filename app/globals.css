@@ -1,22 +1,26 @@
 @import "tailwindcss";
 
-@layer base {
-  body {
-    @apply antialiased;
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Button variants */
-  .btn-solid {
-    @apply bg-[#0A3D62] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#092c48] transition;
-  }
-
-  .btn-outline {
-    @apply border border-[#0A3D62] text-[#0A3D62] bg-white font-semibold py-2 px-4 rounded-md hover:bg-[#f5f8fa] transition;
-  }
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
 }
