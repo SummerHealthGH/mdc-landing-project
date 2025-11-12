@@ -2,7 +2,8 @@
 
 import AboutSection from "./components/AboutSection/AboutSection";
 import Hero from "./components/Hero/Hero";
-import Navigation from "./components/Navigation";
+import NewsSection from "./components/NewsUpdates/newSection";
+import RegisterSection from "./components/Register/RegisterCPD";
 import BothSection from "./components/section/BothSection";
 import ServicesSection from "./components/ServicesSection";
 
@@ -12,8 +13,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50">
-      {/* Navigation Bar */}
-      <Navigation />
 
       {/* Hero Section */}
       <Hero
@@ -40,6 +39,12 @@ export default function Home() {
       <ServicesSection/>
       <BothSection/>
       <AboutSection imageSrc={"/images/about-us.jpg"}/>
+      <div className="my-16">
+        <RegisterSection/>
+      </div>
+      <div className="mb-16">
+        <NewsSection/>
+      </div>
     </main>
   );
 }
