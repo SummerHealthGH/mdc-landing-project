@@ -1,20 +1,29 @@
 "use client";
 
-import AboutSection from "./components/AboutSection/AboutSection";
-import Hero from "./components/Hero/Hero";
-import NewsSection from "./components/NewsUpdates/newSection";
-import RegisterSection from "./components/Register/RegisterCPD";
-import BothSection from "./components/section/BothSection";
-import ServicesSection from "./components/ServicesSection";
+import { useRouter } from "next/navigation";
+
+import AboutSection from "./Home/components/AboutSection/AboutSection";
+import Hero from "./Home/components/Hero/Hero";
+import ServicesSection from "./Home/components/ServicesSection";
+import BothSection from "./Home/components/section/BothSection";
+import RegisterSection from "./Home/components/Register/RegisterCPD";
+import NewsSection from "./Home/components/NewsUpdates/newSection";
 
 export default function Home() {
-  const handleApplyLicense = () => console.log("Apply clicked");
-  const handleRegisterCPD = () => console.log("Register clicked");
+  const router = useRouter();
+
+  // ✅ Handle navigation to the /register page
+  const handleApplyLicense = () => {
+    router.push("/register");
+  };
+
+  // Example for CPD registration — you can change this path too
+  const handleRegisterCPD = () => {
+    router.push("/authpage");
+  };
 
   return (
-    <main className="min-h-screen bg-gray-50">
-
-      {/* Hero Section */}
+    <main className="min-h-screen bg-gray-50 transition-opacity duration-300">
       <Hero
         title="MEDICAL AND DENTAL COUNCIL"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing 
@@ -36,14 +45,14 @@ export default function Home() {
         imageSrc="/images/hero.png"
         imageAlt="Medical professionals"
       />
-      <ServicesSection/>
-      <BothSection/>
-      <AboutSection imageSrc={"/images/about-us.jpg"}/>
+      <ServicesSection />
+      <BothSection />
+      <AboutSection imageSrc="/images/about-us.jpg" />
       <div className="my-16">
-        <RegisterSection/>
+        <RegisterSection />
       </div>
       <div className="mb-16">
-        <NewsSection/>
+        <NewsSection />
       </div>
     </main>
   );

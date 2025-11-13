@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown, Search } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 interface SubSubItem {
   label: string;
@@ -33,6 +34,36 @@ const Navigation = () => {
   const [mobileExpandedItems, setMobileExpandedItems] = useState<Set<string>>(
     new Set()
   );
+  const router = useRouter();
+  const pathname = usePathname();
+
+  // track the currently active top-level nav item (default to home)
+  const [activeTop, setActiveTop] = useState<string>("");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Keep activeTop in sync with the current pathname
+  useEffect(() => {
+    if (!pathname) return;
+    // If pathname is just "/" or empty, set to home
+    if (pathname === "/" || pathname === "") {
+      setActiveTop("");
+    } else {
+      // Find a nav item whose href matches the start of the pathname
+      const matched = navItems.find(
+        (n) => n.href && pathname.startsWith(n.href)
+      );
+      if (matched) {
+        setActiveTop(matched.label);
+      }
+    }
+  }, [pathname]);
+
+  const handleNavigation = (href: string, label: string) => {
+    setIsTransitioning(true);
+    setActiveTop(label);
+    router.push(href);
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
 
   const toggleMobileExpand = (label: string) => {
     setMobileExpandedItems((prev) => {
@@ -49,22 +80,25 @@ const Navigation = () => {
   const navItems: NavItem[] = [
     {
       label: "ABOUT US",
+      href: "/about",
       hasDropdown: true,
-      subItems: [{ label: "About MDC", href: "#" }],
+      subItems: [{ label: "About MDC", href: "/about" }],
     },
     {
-      label: "REGISTRATION",
+      label: "REGISTRATION & LICENSING",
+      href: "/register",
       hasDropdown: true,
-      subItems: [{ label: "Register", href: "#" }],
+      subItems: [{ label: "Register", href: "/register" }],
     },
     {
       label: "COMPLAINTS",
+      href: "/complaints",
       hasDropdown: true,
-      subItems: [{ label: "File Complaint", href: "#" }],
+      subItems: [{ label: "File Complaint", href: "/complaints" }],
     },
     {
       label: "EDUCATION & TRAINING",
-      href: "/EducationTrainingPage",
+      href: "/education-training",
       hasDropdown: true,
       subItems: [
         {
@@ -73,15 +107,15 @@ const Navigation = () => {
           subSubItems: [
             {
               label: "Registration and Examinations",
-              href: "/EducationTrainingPage#registration-examinations",
+              href: "/education-training#registration-examinations",
             },
             {
               label: "PA Licentiate Exams",
-              href: "/EducationTrainingPage#pa-licentiate-exams",
+              href: "/education-training#pa-licentiate-exams",
             },
             {
               label: "Exams Visitation",
-              href: "/EducationTrainingPage#exams-visitation",
+              href: "/education-training#exams-visitation",
             },
           ],
         },
@@ -91,11 +125,11 @@ const Navigation = () => {
           subSubItems: [
             {
               label: "Housemanship Medical and Dental Officers",
-              href: "/EducationTrainingPage#housemanship-medical-dental",
+              href: "/education-training#housemanship-medical-dental",
             },
             {
               label: "Internship PAs and CRAs",
-              href: "/EducationTrainingPage#internship-pas-cras",
+              href: "/education-training#internship-pas-cras",
             },
           ],
         },
@@ -105,19 +139,19 @@ const Navigation = () => {
           subSubItems: [
             {
               label: "CPD Policies",
-              href: "/EducationTrainingPage#cpd-policies",
+              href: "/education-training#cpd-policies",
             },
             {
               label: "Accredited CPD Providers",
-              href: "/EducationTrainingPage#accredited-cpd-providers",
+              href: "/education-training#accredited-cpd-providers",
             },
             {
               label: "Accredited CPD Programs",
-              href: "/EducationTrainingPage#accredited-cpd-programs",
+              href: "/education-training#accredited-cpd-programs",
             },
             {
               label: "CPD Accredited Forms",
-              href: "/EducationTrainingPage#cpd-accredited-forms",
+              href: "/education-training#cpd-accredited-forms",
             },
           ],
         },
@@ -127,17 +161,17 @@ const Navigation = () => {
           subSubItems: [
             {
               label: "Medical and Dental Training Schools",
-              href: "/EducationTrainingPage#medical-dental-training-schools",
+              href: "/education-training#medical-dental-training-schools",
             },
             {
               label: "PAs and CRA Training Schools",
-              href: "/EducationTrainingPage#pas-cra-training-schools",
+              href: "/education-training#pas-cra-training-schools",
             },
           ],
         },
       ],
     },
-    { label: "CONTACT", href: "#" },
+    { label: "CONTACT", href: "/contact" },
   ];
 
   return (
@@ -146,8 +180,12 @@ const Navigation = () => {
       <div className="border-b border-gray-100">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Left: Logo with Text */}
-            <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+            {/* Left: Logo with Text - Clickable to go home */}
+            <button
+              type="button"
+              onClick={() => router.push("/")}
+              className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 hover:opacity-80 transition-opacity cursor-pointer"
+            >
               {/* Logo from images */}
               <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
@@ -162,7 +200,7 @@ const Navigation = () => {
               <span className="hidden sm:inline text-xs lg:text-sm font-semibold text-[#6B8BA8] uppercase tracking-tight whitespace-nowrap">
                 Medical and Dental Council
               </span>
-            </div>
+            </button>
 
             {/* Right: Register & Login Buttons - Hidden on Mobile */}
             <div className="hidden lg:flex items-center space-x-2 lg:space-x-3 flex-shrink-0">
@@ -207,29 +245,61 @@ const Navigation = () => {
               {navItems.map((item, index) => (
                 <React.Fragment key={item.label}>
                   {index > 0 && <span className="text-gray-300 mx-1">|</span>}
-                  <button
+                  <div
+                    className="relative group"
                     onMouseEnter={() =>
                       item.hasDropdown && setActiveDropdown(item.label)
                     }
                     onMouseLeave={() => setActiveDropdown(null)}
-                    className={`cursor-pointer relative px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center group whitespace-nowrap ${
-                      item.label === "REGISTRATION"
-                        ? "text-[#0A3D62] font-semibold"
-                        : "text-gray-700 hover:text-[#0A3D62]"
-                    }`}
                   >
-                    {item.label}
-                    {item.hasDropdown && (
-                      <ChevronDown className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180 duration-200" />
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        onClick={() => setActiveTop(item.label)}
+                        className={`cursor-pointer relative px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center whitespace-nowrap ${
+                          item.label === activeTop
+                            ? "text-[#0A3D62] font-semibold scale-105"
+                            : "text-gray-700 hover:text-[#0A3D62]"
+                        }`}
+                      >
+                        {item.label}
+                        {item.hasDropdown && (
+                          <ChevronDown className="ml-1 w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                        )}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          item.hasDropdown &&
+                            setActiveDropdown(
+                              activeDropdown === item.label ? null : item.label
+                            );
+                        }}
+                        className={`cursor-pointer relative px-3 py-2 text-sm font-medium transition-all duration-300 flex items-center whitespace-nowrap ${
+                          item.label === activeTop
+                            ? "text-[#0A3D62] font-semibold scale-105"
+                            : "text-gray-700 hover:text-[#0A3D62]"
+                        }`}
+                      >
+                        {item.label}
+                        {item.hasDropdown && (
+                          <ChevronDown
+                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                              activeDropdown === item.label ? "rotate-180" : ""
+                            } group-hover:rotate-180`}
+                          />
+                        )}
+                      </button>
                     )}
 
-                    {/* Dropdown Menu */}
+                    {/* Dropdown Menu - Below the nav item */}
                     {item.hasDropdown && activeDropdown === item.label && (
-                      <div className="absolute top-full left-0 mt-2 min-w-max bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 min-w-max bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
                         {item.subItems?.map((subItem, subIndex) => (
                           <div
                             key={subIndex}
-                            className="relative group"
+                            className="relative group/sub"
                             onMouseEnter={() =>
                               setActiveSubDropdown(subItem.label)
                             }
@@ -238,7 +308,7 @@ const Navigation = () => {
                             {subItem.hasSubDropdown && subItem.subSubItems ? (
                               <div className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-[#0A3D62] hover:text-white cursor-pointer transition-colors duration-200">
                                 <span>{subItem.label}</span>
-                                <ChevronDown className="w-4 h-4 ml-2" />
+                                <ChevronDown className="w-4 h-4 ml-2 transition-transform duration-200 group-hover/sub:rotate-180" />
                               </div>
                             ) : (
                               <Link
@@ -249,11 +319,11 @@ const Navigation = () => {
                               </Link>
                             )}
 
-                            {/* Sub-sub dropdown */}
+                            {/* Sub-sub dropdown - Beside the parent dropdown */}
                             {subItem.hasSubDropdown &&
                               subItem.subSubItems &&
                               activeSubDropdown === subItem.label && (
-                                <div className="absolute left-full top-0 mt-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                                <div className="absolute left-full top-0 ml-0 mt-0 w-80 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
                                   {subItem.subSubItems.map(
                                     (subSubItem, subSubIndex) => (
                                       <Link
@@ -271,7 +341,7 @@ const Navigation = () => {
                         ))}
                       </div>
                     )}
-                  </button>
+                  </div>
                 </React.Fragment>
               ))}
             </div>
@@ -341,27 +411,59 @@ const Navigation = () => {
                     {item.label}
                   </Link>
                 ) : (
-                  <button
-                    onClick={() =>
-                      item.hasDropdown && toggleMobileExpand(item.label)
-                    }
-                    className={`text-left px-3 py-3 text-sm font-medium transition-colors duration-200 flex items-center justify-between w-full rounded-lg hover:bg-gray-50 ${
-                      item.label === "REGISTRATION"
+                  <div
+                    className={`flex items-center justify-between px-3 py-3 text-sm font-medium transition-colors duration-200 w-full rounded-lg ${
+                      item.label === activeTop
                         ? "text-[#0A3D62] font-semibold"
                         : "text-gray-700 hover:text-[#0A3D62]"
                     }`}
                   >
-                    <span>{item.label}</span>
+                    <div className="flex-1 text-left">
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className="no-underline block"
+                          onClick={() => {
+                            if (item.href) {
+                              handleNavigation(item.href, item.label);
+                            }
+                            setMobileOpen(false);
+                          }}
+                        >
+                          <span className="block transition-transform duration-300">
+                            {item.label}
+                          </span>
+                        </Link>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            item.hasDropdown && toggleMobileExpand(item.label)
+                          }
+                          className="w-full text-left"
+                        >
+                          {item.label}
+                        </button>
+                      )}
+                    </div>
+
                     {item.hasDropdown && (
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          mobileExpandedItems.has(item.label)
-                            ? "rotate-180"
-                            : ""
-                        }`}
-                      />
+                      <button
+                        type="button"
+                        onClick={() => toggleMobileExpand(item.label)}
+                        className="p-2 rounded"
+                        aria-expanded={mobileExpandedItems.has(item.label)}
+                      >
+                        <ChevronDown
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            mobileExpandedItems.has(item.label)
+                              ? "rotate-180"
+                              : ""
+                          }`}
+                        />
+                      </button>
                     )}
-                  </button>
+                  </div>
                 )}
 
                 {/* Mobile Submenu */}
