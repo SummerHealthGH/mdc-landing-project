@@ -27,19 +27,17 @@ const ServicesSection: React.FC<ServicesProps> = ({ services }) => {
       isPdf: true, // ✅ marks this button to open PDF
     },
     {
-      title: "All Doctors",
+      title: "Standards & Quality Assurance",
       items: [
-        "Lorem ipsum dolor sit amet",
-        "Lorem ipsum dolor sit amet",
-        "Lorem ipsum dolor sit amet",
+       "Ensuring the highest professional and ethical standards in medical and dental practice."
       ],
     },
     {
-      title: "Patients & The Public",
+      title: "Education & Training",
       items: [
-        "Lorem ipsum dolor sit amet",
-        "Lorem ipsum dolor sit amet",
-        "Lorem ipsum dolor sit amet",
+        "Regulates and monitors medical and dental training institutions",
+        "Oversees curriculum quality",
+       " Conducts examinations",
       ],
     },
   ];

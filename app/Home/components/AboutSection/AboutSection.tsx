@@ -14,8 +14,8 @@ interface AboutSectionProps {
 
 const AboutSection: FC<AboutSectionProps> = ({
   title = "ABOUT US",
-  subtitle = "LOREM IPSUM DASOR MEDUA",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt.",
+  subtitle = "“Guiding the Professions, Protecting the Public”",
+  description = "The Medical and Dental Council is the statutory regulatory body established under Part II of the Health Professions Regulatory Bodies Act, 2013 (Act 857).Our mandate is to secure, in the public interest, the highest standards in the training and practice of medicine and dentistry in Ghana.",
   buttonText = "ABOUT US",
   buttonLink = "/about",
   imageSrc,
