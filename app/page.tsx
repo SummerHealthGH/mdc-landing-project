@@ -45,7 +45,7 @@ export default function Home() {
       <ServicesSection />
       <BothSection />
       <AboutSection imageSrc="/images/about-us.jpg" />
-      <div className="my-16">
+      <div>
         <RegisterSection />
       </div>
       <div className="mb-16">
