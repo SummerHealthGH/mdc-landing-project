@@ -26,10 +26,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50 transition-opacity duration-300">
       <Hero
         title="MEDICAL AND DENTAL COUNCIL"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing 
-        elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-        laboris nisi ut aliquip ex ea commodo consequat."
+        description="We are the statutory body mandated under the Health Professions Regulatory Bodies Act, 2013 (Act 857), responsible for ensuring the highest standards in the training and practice of medicine and dentistry in Ghana."
         buttons={[
           {
             label: "APPLY FOR LICENSE",
@@ -48,7 +45,7 @@ export default function Home() {
       <ServicesSection />
       <BothSection />
       <AboutSection imageSrc="/images/about-us.jpg" />
-      <div className="my-16">
+      <div>
         <RegisterSection />
       </div>
       <div className="mb-16">

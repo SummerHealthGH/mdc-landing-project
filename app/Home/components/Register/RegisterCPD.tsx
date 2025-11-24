@@ -14,7 +14,7 @@ interface RegisterSectionProps {
 
 const RegisterSection: FC<RegisterSectionProps> = ({
   title = "REGISTER CPD NOW",
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  description = "Stay compliant and advance your professional development by registering for the Medical and Dental Council’s Continuing Professional Development (CPD) programme.",
   buttonText = "REGISTER CPD",
   buttonLink = "/authpage",
   coursesCount = "7.4K",
