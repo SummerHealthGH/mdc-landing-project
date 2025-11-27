@@ -1,12 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import AboutSection from "./Home/components/AboutSection/AboutSection";
 import Hero from "./Home/components/Hero/Hero";
 import ServicesSection from "./Home/components/ServicesSection";
 import BothSection from "./Home/components/section/BothSection";
 import NewsSection from "./Home/components/NewsUpdates/newSection";
 import RegisterSection from "./Home/components/Register/RegisterCPD";
+import AboutSection from "./Home/components/AboutSection/AboutSection";
 
 export default function Home() {
   const router = useRouter();
@@ -41,15 +41,16 @@ export default function Home() {
         imageSrc="/images/hero.png"
         imageAlt="Medical professionals"
       />
+       <div className="mb-16">
+        <NewsSection />
+      </div>
       <ServicesSection />
       <BothSection />
       <AboutSection imageSrc="/images/about-us.jpg" />
       <div>
         <RegisterSection />
       </div>
-      <div className="mb-16">
-        <NewsSection />
-      </div>
+     
     </main>
   );
 }
