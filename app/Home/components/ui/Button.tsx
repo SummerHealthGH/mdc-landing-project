@@ -1,14 +1,19 @@
 "use client";
 
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { motion, MotionProps } from "framer-motion";
+import { motion, MotionProps, PanInfo } from "framer-motion";
 import clsx from "clsx";
 
+// Omit native drag events to avoid type conflicts with Framer Motion
 export interface ButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onDragStart" | "onDragEnd"> {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onDragStart" | "onDragEnd" | "onDrag"> {
   variant?: "outline" | "solid";
   children: React.ReactNode;
-  motionProps?: MotionProps; // Optional: to pass Framer Motion drag/animation props safely
+  motionProps?: MotionProps & {
+    onDrag?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+    onDragStart?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+    onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void;
+  };
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -23,6 +28,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-[#0A3D62] text-white hover:bg-[#092c48] hover:shadow-lg",
     };
 
+    // Destructure only safe motion props to avoid type conflicts
     const { onDrag, onDragStart, onDragEnd, ...safeMotionProps } = motionProps || {};
 
     return (
@@ -32,8 +38,11 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(baseStyles, variants[variant], className)}
-        {...props} 
-        {...safeMotionProps}
+        {...props} // native button props
+        {...safeMotionProps} // safe motion props
+        onDrag={onDrag}
+        onDragStart={onDragStart}
+        onDragEnd={onDragEnd}
       >
         {children}
       </motion.button>
