@@ -3,6 +3,7 @@
 import AboutSection from "../Home/components/AboutSection/AboutSection";
 
 
+
 export default function AboutPage() {
   return (
     <main className="min-h-screen bg-gray-50">
