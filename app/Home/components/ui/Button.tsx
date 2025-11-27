@@ -4,14 +4,22 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 import { motion, MotionProps } from "framer-motion";
 import clsx from "clsx";
 
+// Remove ALL conflicting native events
+type UnsafeEvents =
+  | "onDrag"
+  | "onDragStart"
+  | "onDragEnd"
+  | "onAnimationStart"
+  | "onAnimationEnd"
+  | "onAnimationIteration";
+
 export interface ButtonProps
-  extends Omit<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    "onDragStart" | "onDragEnd" | "onDrag"
-  > {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, UnsafeEvents> {
   variant?: "outline" | "solid";
   children: React.ReactNode;
-  motionProps?: MotionProps; // <— only allow REAL motion props
+
+  /** Only real Framer Motion props allowed */
+  motionProps?: MotionProps;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -32,8 +40,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(baseStyles, variants[variant], className)}
-        {...props}          // native button props
-        {...motionProps}    // safe motion props (no type conflict!)
+        {...props}         // safe native props only
+        {...motionProps}   // REAL framer-motion props only
       >
         {children}
       </motion.button>
