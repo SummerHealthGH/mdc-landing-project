@@ -1,13 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import AboutSection from "./Home/components/AboutSection/AboutSection";
 import Hero from "./Home/components/Hero/Hero";
 import ServicesSection from "./Home/components/ServicesSection";
 import BothSection from "./Home/components/section/BothSection";
-import RegisterSection from "./Home/components/Register/RegisterCPD";
 import NewsSection from "./Home/components/NewsUpdates/newSection";
+import RegisterSection from "./Home/components/Register/RegisterCPD";
 
 export default function Home() {
   const router = useRouter();
