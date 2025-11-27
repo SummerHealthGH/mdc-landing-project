@@ -21,13 +21,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-[#0A3D62] text-white hover:bg-[#092c48] hover:shadow-lg",
     };
 
+    // Destructure and remove React drag events to prevent type errors
+    const { onDragStart, onDragEnd, ...rest } = props;
+
     return (
       <motion.button
         ref={ref}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(baseStyles, variants[variant], className)}
-        {...props}
+        {...rest}
       >
         {children}
       </motion.button>
