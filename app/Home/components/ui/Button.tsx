@@ -23,6 +23,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-[#0A3D62] text-white hover:bg-[#092c48] hover:shadow-lg",
     };
 
+    const { onDrag, onDragStart, onDragEnd, ...safeMotionProps } = motionProps || {};
+
     return (
       <motion.button
         ref={ref}
@@ -30,8 +32,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(baseStyles, variants[variant], className)}
-        {...props} // Safe because we omitted React drag events
-        {...motionProps} // Optional motion props like drag, initial, animate
+        {...props} 
+        {...safeMotionProps}
       >
         {children}
       </motion.button>
