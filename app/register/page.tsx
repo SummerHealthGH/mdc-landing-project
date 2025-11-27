@@ -1,6 +1,7 @@
 "use client";
 
-import RegisterSection from "../components/Register/RegisterCPD";
+import RegisterSection from "../Home/components/Register/RegisterCPD";
+
 
 export default function RegisterPage() {
   return (
