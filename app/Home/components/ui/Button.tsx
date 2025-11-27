@@ -22,7 +22,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     // Destructure and remove React drag events to prevent type errors
-    const { onDragStart, onDragEnd, ...rest } = props;
+    const { onDragStart, onDragEnd, ...safeProps } = props;
 
     return (
       <motion.button
@@ -30,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
         className={clsx(baseStyles, variants[variant], className)}
-        {...rest}
+        {...safeProps}
       >
         {children}
       </motion.button>
