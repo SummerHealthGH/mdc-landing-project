@@ -28,7 +28,7 @@ const Hero: React.FC<HeroProps> = ({
 }) => {
   return (
     <header className="bg-white">
-      <div className="max-w-8xl mx-auto md:px-8 py-12 md:py-16 lg:py-20">
+      <div className="max-w-8xl mx-auto px-6 sm:px-8 md:px-10 lg:px-0 md:px-6 lg:px-8 py-12 md:py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="flex flex-col justify-center">
