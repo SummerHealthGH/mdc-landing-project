@@ -13,7 +13,7 @@ export default function MdcContent() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         
         {/* Mission */}
-        <div className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="mission" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaRocket size={24} />
           </div>
@@ -24,7 +24,7 @@ export default function MdcContent() {
         </div>
 
         {/* Vision */}
-        <div className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="vision" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaBullseye size={24} />
           </div>
@@ -35,7 +35,7 @@ export default function MdcContent() {
         </div>
 
         {/* Shared Values */}
-        <div className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="shared-values" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaUsers size={24} />
           </div>
@@ -47,7 +47,7 @@ export default function MdcContent() {
       </div>
 
       {/* Core Value Panels */}
-      <div className="mt-12 max-w-4xl mx-auto space-y-6">
+      <div id="core-values" className="mt-12 max-w-4xl mx-auto space-y-6">
 
         {/* Core Values */}
         <section className="p-6 border-l-4 border-[#0A3D62] bg-gray-50 rounded-md">
@@ -90,7 +90,7 @@ export default function MdcContent() {
         </section>
 
         {/* FUNCTIONS */}
-        <section className="p-6 border-l-4 border-[#0A3D62] bg-gray-50 rounded-md space-y-4">
+        <section id="functions" className="p-6 border-l-4 border-[#0A3D62] bg-gray-50 rounded-md space-y-4">
           <h3 className="text-xl font-bold text-[#0A3D62] mb-4">FUNCTIONS</h3>
 
           <div className="space-y-4">
