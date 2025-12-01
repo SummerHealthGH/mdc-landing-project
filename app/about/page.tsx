@@ -1,7 +1,7 @@
 "use client";
 
-import AboutContent from "./components/about/AboutContent";
-import AboutHero from "./components/about/AboutHero";
+import AboutContent from "./components/AboutContent";
+import AboutHero from "./components/AboutHero";
 
 export default function AboutPage() {
   return (
