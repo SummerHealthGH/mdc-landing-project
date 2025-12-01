@@ -4,7 +4,6 @@ import Image from "next/image";
 import { FC } from "react";
 
 interface AboutSectionProps {
-  title?: string;
   subtitle?: string;
   description?: string;
   buttonText?: string;
@@ -14,7 +13,6 @@ interface AboutSectionProps {
 }
 
 const AboutSection: FC<AboutSectionProps> = ({
-  title = "ABOUT US",
   subtitle = "“Guiding the Professions, Protecting the Public”",
   description = "The Medical and Dental Council is the statutory body established by law, under Part II of the Health Professions Regulatory Bodies Act, 2013 (Act 857), to secure in the public interest the highest standards in the training and practice of medicine and dentistry in Ghana.",
   buttonText = "READ MORE",
@@ -27,9 +25,7 @@ const AboutSection: FC<AboutSectionProps> = ({
       
       {/* Left content */}
       <div className="relative z-10 md:w-1/2 px-4 sm:px-6 lg:px-16 py-10 sm:py-12 md:py-16 space-y-6">
-        <h4 className="text-[#0A3D62] font-semibold tracking-wide uppercase">
-          {title}
-        </h4>
+      
         <h2 className="text-2xl md:text-3xl font-bold text-[#0A3D62]">
           {subtitle}
         </h2>
