@@ -94,7 +94,11 @@ const Navigation = () => {
       label: "REGISTRATION & LICENSING",
       href: "/register",
       hasDropdown: true,
-      subItems: [{ label: "Registeration", href: "/register" }],
+      subItems: [{ label: "Registeration", href: "/register" },
+      {label:"Guide to Register", href: "/register#register-guide"},
+      {label:"Registration Overview", href: "/register#overview"},
+      {label: "Licensing", href:"/register#licensing"}
+     ],
     },
     {
       label: "COMPLAINTS",
