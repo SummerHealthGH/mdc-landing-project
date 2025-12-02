@@ -13,34 +13,34 @@ export default function MdcContent() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         
         {/* Mission */}
-        <div id="mission" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="mission" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#E9F4FF] text-black transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaRocket size={24} />
           </div>
-          <h2 className="font-bold mb-2 group-hover:text-white">MISSION</h2>
-          <p className="text-gray-700 group-hover:text-white text-sm transition">
+          <h2 className="font-bold mb-2 group-hover:text-black">MISSION</h2>
+          <p className="text-gray-700 group-hover:text-black text-sm transition">
             To advance excellence in medical and dental training and ethical professional practice in Ghana through quality assurance, education, registration, licensing, and promotion of international best practice.
           </p>
         </div>
 
         {/* Vision */}
-        <div id="vision" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="vision" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#E9F4FF]  transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaBullseye size={24} />
           </div>
-          <h2 className="font-bold mb-2 group-hover:text-white">VISION</h2>
-          <p className="text-gray-700 group-hover:text-white text-sm transition">
+          <h2 className="font-bold mb-2 group-hover:text-black">VISION</h2>
+          <p className="text-gray-700 group-hover:text-black text-sm transition">
             A competent, responsive, accountable, and innovative professional regulatory authority guiding the medical and dental professions for the public good.
           </p>
         </div>
 
         {/* Shared Values */}
-        <div id="shared-values" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#0A3D62] hover:text-white transition cursor-pointer group">
+        <div id="shared-values" className="flex flex-col items-center text-center p-8 rounded-xl shadow-md bg-white hover:bg-[#E9F4FF]  transition cursor-pointer group">
           <div className="bg-[#0A3D62] text-white w-16 h-16 rounded-full flex items-center justify-center mb-4">
             <FaUsers size={24} />
           </div>
-          <h2 className="font-bold mb-2 group-hover:text-white">SHARED VALUES</h2>
-          <p className="text-gray-700 group-hover:text-white text-sm transition">
+          <h2 className="font-bold mb-2 group-hover:text-black">SHARED VALUES</h2>
+          <p className="text-gray-700 group-hover:text-black text-sm transition">
             Guiding the Professions, Protecting the Public. Integrity, transparency, accountability, excellence, fairness, collaboration, and strategic partnership guide everything we do.
           </p>
         </div>

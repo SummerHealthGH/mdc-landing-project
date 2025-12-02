@@ -58,7 +58,7 @@ const QuickAccess: React.FC<QuickAccessProps> = ({ items }) => {
             className={`flex items-center justify-between px-6 py-5 rounded-md text-sm font-semibold transition-all duration-200 ${
               item.variant === "solid"
                 ? "bg-[#0A3D62] text-white hover:bg-[#092C48]"
-                : "border-2 border-[#0A3D62] text-[#0A3D62] hover:bg-[#0A3D62] hover:text-white"
+                : "border-2 border-[#0A3D62] text-[#0A3D62] hover:bg-[#E9F4FF] hover:text-black"
             }`}
           >
             <div className="flex items-center gap-3">
