@@ -94,7 +94,11 @@ const Navigation = () => {
       label: "REGISTRATION & LICENSING",
       href: "/register",
       hasDropdown: true,
-      subItems: [{ label: "Register", href: "/register" }],
+      subItems: [{ label: "Registeration", href: "/register" },
+      {label:"Guide to Register", href: "/register#register-guide"},
+      {label:"Registration Overview", href: "/register#overview"},
+      {label: "Licensing", href:"/register#licensing"}
+     ],
     },
     {
       label: "COMPLAINTS",
@@ -291,7 +295,7 @@ const Navigation = () => {
                         {item.label}
                         {item.hasDropdown && (
                           <ChevronDown
-                            className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                            className={`ml-1 w-8 h-4 transition-transform duration-200 ${
                               activeDropdown === item.label ? "rotate-180" : ""
                             } group-hover:rotate-180`}
                           />
@@ -301,7 +305,7 @@ const Navigation = () => {
 
                     {/* Dropdown Menu - Below the nav item */}
                     {item.hasDropdown && activeDropdown === item.label && (
-                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 min-w-max bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+                      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-0 min-w-max bg-white border border-gray-200 rounded-lg shadow-lg py-2 px-10 z-50">
                         {item.subItems?.map((subItem, subIndex) => (
                           <div
                             key={subIndex}
